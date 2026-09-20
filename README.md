@@ -4,6 +4,10 @@
 
 <br>
 
+<img src="https://img.shields.io/badge/-000000?style=for-the-badge" height="2" width="500">
+
+<br>
+
 ### `約` about
 
 breaking things for fun, shipping the occasional dumb little project nobody asked for.
@@ -39,8 +43,12 @@ breaking things for fun, shipping the occasional dumb little project nobody aske
 
 <br>
 
-<div align="center">
+<img src="https://img.shields.io/badge/-000000?style=for-the-badge" height="2" width="500">
 
-minimal · meticulous
+<br>
+
+<div align="center">
+  
+<sub>minimal · meticulous</sub>
 
 </div>
