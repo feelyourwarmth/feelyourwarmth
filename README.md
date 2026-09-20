@@ -10,6 +10,8 @@
 
 ### `約` about
 
+21y old dumbass who doesn't know how to do things properly lmao.
+<br>
 breaking things for fun, shipping the occasional dumb little project nobody asked for.
 
 <br>
