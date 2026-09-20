@@ -33,7 +33,7 @@ breaking things for fun, shipping the occasional dumb little project nobody aske
 
 ### `現` currently
 
-🛠 contributing in **[Ryoku Arch](https://github.com/Ryoku-dev/ryoku-arch)**
+🛠 contributing in **[Ryoku Arch](https://github.com/Ryoku-dev/ryoku-arch)** and **[Ryostore](https://github.com/Ryoku-dev/ryostore)**ryostore
 <br>
 🧪 cursed side-projects, ask me about none of them
 
