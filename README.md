@@ -26,12 +26,7 @@ breaking things for fun, shipping the occasional dumb little project nobody aske
 ### `統` stats
 
 <div align="center">
-<img height="165" src="https://github-readme-stats.vercel.app/api?username=feelyourwarmth&show_icons=true&hide_border=true&bg_color=0a0805&title_color=e2342a&icon_color=e2342a&text_color=c9c9c9&ring_color=e2342a" />
-<img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=feelyourwarmth&layout=compact&hide_border=true&bg_color=0a0805&title_color=e2342a&text_color=c9c9c9&langs_count=6" />
-</div>
-
-<div align="center">
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=feelyourwarmth&hide_border=true&background=0a0805&ring=e2342a&fire=e2342a&currStreakLabel=e2342a" />
+<img src="https://streak-stats.demolab.com/?user=feelyourwarmth&hide_border=true&background=0a0805&ring=e2342a&fire=e2342a&currStreakNum=c9c9c9&currStreakLabel=e2342a&sideNums=c9c9c9&sideLabels=c9c9c9&dates=888888&stroke=333333" />
 </div>
 
 <br>
