@@ -45,7 +45,7 @@ breaking things for fun, shipping the occasional dumb little project nobody aske
 <br>
 **CPU:** AMD Ryzen 5 5600 @ 4.70 GHz
 <br>
-**GPU:** NVIDIA GeForce RTX 3060 12gb @ 2000MHz
+**GPU:** NVIDIA GeForce RTX 3060 12gb @ 1965MHz
 <br>
 **MEM:** 32gb DDR4 3200MHz
 <br>
