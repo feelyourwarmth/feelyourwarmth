@@ -55,7 +55,7 @@ breaking things for fun, shipping the occasional dumb little project nobody aske
 
 ⚙️ contributing in **[Ryoku](https://github.com/Ryoku-dev/ryoku)** and **[Ryostore](https://github.com/Ryoku-dev/ryostore)**
 <br>
-🧪 cursed side-projects, ask me about none of them
+🧪 cursed side-projects
 
 <br>
 
