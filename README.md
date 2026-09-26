@@ -37,6 +37,20 @@ breaking things for fun, shipping the occasional dumb little project nobody aske
 
 <br>
 
+### `諸` specs
+
+**OS:** Arch Linux
+<br>
+**CPU:** AMD Ryzen 5 5600 @ 4.70 GHz
+<br>
+**GPU:** NVIDIA GeForce RTX 3060 12gb
+<br>
+**MEM:** 32gb DDR4 3200MHz
+<br>
+**WM:** niri
+
+<br>
+
 ### `現` currently
 
 ⚙️ contributing in **[Ryoku](https://github.com/Ryoku-dev/ryoku)** and **[Ryostore](https://github.com/Ryoku-dev/ryostore)**
