@@ -41,13 +41,15 @@ breaking things for fun, shipping the occasional dumb little project nobody aske
 
 **OS:** Arch Linux
 <br>
+**KER:** Linux CachyOS Bore
+<br>
 **CPU:** AMD Ryzen 5 5600 @ 4.70 GHz
 <br>
 **GPU:** NVIDIA GeForce RTX 3060 12gb
 <br>
 **MEM:** 32gb DDR4 3200MHz
 <br>
-**WM:** niri
+**WM:** niri 26.04
 
 <br>
 
