@@ -47,7 +47,7 @@ breaking things for fun, shipping the occasional dumb little project nobody aske
 <br>
 **GPU:** NVIDIA GeForce RTX 3060 12gb @ 1965MHz
 <br>
-**MEM:** 32gb DDR4 3200MHz
+**MEM:** 32gb DDR4 @ 3200MHz
 <br>
 **WM:** niri 26.04
 
