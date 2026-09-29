@@ -39,7 +39,7 @@ breaking things for fun, shipping the occasional dumb little project nobody aske
 
 ### `諸` specs
 
-**OS:** Arch Linux
+**OS:** Arch Linux & NixOS
 <br>
 **KER:** Linux CachyOS Bore
 <br>
