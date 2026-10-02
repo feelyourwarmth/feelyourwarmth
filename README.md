@@ -39,7 +39,7 @@ breaking things for fun, shipping the occasional dumb little project nobody aske
 
 ### `諸` specs
 
-**OS:** NixOS
+**OS:** NixOS 26.11
 <br>
 **KER:** Linux CachyOS
 <br>
