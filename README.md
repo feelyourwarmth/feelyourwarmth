@@ -63,20 +63,7 @@ breaking things for fun, shipping the occasional dumb little project nobody aske
 
 ### `記` commits
 
-<picture>
-    <source
-      media="(prefers-color-scheme: dark)"
-      srcset="https://raw.githubusercontent.com/feelyourwarmth/feelyourwarmth/output/pacman-contribution-graph-dark.svg"
-    />
-    <source
-      media="(prefers-color-scheme: light)"
-      srcset="https://raw.githubusercontent.com/feelyourwarmth/feelyourwarmth/output/pacman-contribution-graph.svg"
-    />
-    <img
-      alt="Pac-Man contribution graph"
-      src="https://raw.githubusercontent.com/feelyourwarmth/feelyourwarmth/output/pacman-contribution-graph-dark.svg"
-    >
-</picture>
+<img alt="Pac-Man contribution graph" src="https://raw.githubusercontent.com/feelyourwarmth/feelyourwarmth/output/pacman-contribution-graph-dark.svg">
 
 <br>
 
