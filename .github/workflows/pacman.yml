@@ -37,7 +37,7 @@ jobs:
 
           FLAT_COMMITS = False  # True: todo commit fica #e2342a | False: degradê por intensidade
           GAIN = 1.6            # com 1.6 o commit mais forte vira exatamente #e2342a
-          GRAY_MIN = 0x2a       # cinza mínimo das células vazias (visível sobre o fundo)
+          GRAY_MIN = 0x1c       # cinza mínimo das células vazias (visível sobre o fundo)
           GRAY_MAX = 0x55       # cinza máximo (textos)
 
           NAMED = {
@@ -113,6 +113,18 @@ jobs:
                   m = re.search(r"<svg[^>]*>", svg)
                   svg = svg[:m.end()] + f'<rect width="100%" height="100%" fill="{BG}"/>' + svg[m.end():]
 
+              GHOST_FILTER = (
+                  '<defs><filter id="ghost-mono" color-interpolation-filters="sRGB">'
+                  '<feColorMatrix type="matrix" values="'
+                  '0.3402 1.1443 0.1155 0 0.12 '
+                  '0.3402 1.1443 0.1155 0 0.12 '
+                  '0.3402 1.1443 0.1155 0 0.12 '
+                  '0 0 0 1 0"/></filter></defs>'
+              )
+              m = re.search(r"<svg[^>]*>", svg)
+              svg = svg[:m.end()] + GHOST_FILTER + svg[m.end():]
+              svg = re.sub(r'<g id="(ghost\d+)"', r'<g id="\1" filter="url(#ghost-mono)"', svg)
+            
               path.write_text(svg, encoding="utf-8")
               print(f"Recolorido: {path} (retângulos de fundo ajustados: {n})")
 
