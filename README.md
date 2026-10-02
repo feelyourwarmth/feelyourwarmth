@@ -39,7 +39,7 @@ breaking things for fun, shipping the occasional dumb little project nobody aske
 
 ### `諸` specs
 
-**OS:** NixOS 26.11
+**OS:** NixOS 26.11 (Zokor)
 <br>
 **KER:** Linux CachyOS
 <br>
@@ -58,6 +58,25 @@ breaking things for fun, shipping the occasional dumb little project nobody aske
 ⚙️ contributing in **[Ryoku](https://github.com/Ryoku-dev/ryoku)** and **[Ryostore](https://github.com/Ryoku-dev/ryostore)**
 <br>
 🧪 cursed side-projects
+
+<br>
+
+### `記` commits
+
+<picture>
+    <source
+      media="(prefers-color-scheme: dark)"
+      srcset="https://raw.githubusercontent.com/feelyourwarmth/feelyourwarmth/output/pacman-contribution-graph-dark.svg"
+    />
+    <source
+      media="(prefers-color-scheme: light)"
+      srcset="https://raw.githubusercontent.com/feelyourwarmth/feelyourwarmth/output/pacman-contribution-graph.svg"
+    />
+    <img
+      alt="Pac-Man contribution graph"
+      src="https://raw.githubusercontent.com/feelyourwarmth/feelyourwarmth/output/pacman-contribution-graph-dark.svg"
+    >
+</picture>
 
 <br>
 
