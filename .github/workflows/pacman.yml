@@ -29,15 +29,20 @@ jobs:
           python3 - <<'PY'
           import re
           import colorsys
-          from collections import Counter
           from pathlib import Path
 
-          BG = (0x0a, 0x08, 0x05)
+          BG = "#0a0805"
           RED = (0xe2, 0x34, 0x2a)
+          BG_RGB = (0x0a, 0x08, 0x05)
 
-          GAIN = 1.5          # commits mais fortes chegam perto de #e2342a
+          GAIN = 1.6          # com 1.6 o commit mais forte vira exatamente #e2342a
           GRAY_MIN = 0x2a     # cinza mínimo das células vazias (visível sobre o fundo)
-          GRAY_MAX = 0x55     # cinza máximo
+          GRAY_MAX = 0x55     # cinza máximo (textos)
+
+          NAMED = {
+              "yellow": "#e2342a",   # Pac-Man
+              "red": "#ff7a6e",      # Pac-Man com power-up (um pouco mais claro)
+          }
 
           def lum(r, g, b):
               return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255
@@ -46,30 +51,25 @@ jobs:
               h, s, v = colorsys.rgb_to_hsv(r / 255, g / 255, b / 255)
               hue = h * 360
               if s < 0.25:
-                  return True                      # cinza neutro
+                  return True
               if 170 <= hue <= 270 and s < 0.60:
-                  return True                      # azul-acinzentado (ex.: #161b22)
+                  return True
               return False
 
           def recolor(r, g, b):
               l = lum(r, g, b)
               if is_gray(r, g, b):
-                  v = round(l * 255)
-                  v = min(max(v, GRAY_MIN), GRAY_MAX)
+                  v = min(max(round(l * 255), GRAY_MIN), GRAY_MAX)
                   return (v, v, v)
               t = min(1.0, l * GAIN)
-              return tuple(round(BG[i] + (RED[i] - BG[i]) * t) for i in range(3))
+              return tuple(round(BG_RGB[i] + (RED[i] - BG_RGB[i]) * t) for i in range(3))
 
-          HEX = re.compile(
-              r"(?<!url\()#([0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{3})(?![0-9a-zA-Z_-])"
-          )
-          RGBA = re.compile(
-              r"rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*(?:,\s*([\d.]+)\s*)?\)"
-          )
+          HEX = re.compile(r"(?<!url\()#([0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{3})(?![0-9a-zA-Z_-])")
+          RGBA = re.compile(r"rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*(?:,\s*([\d.]+)\s*)?\)")
+          NAMED_RE = re.compile(r"(?<![\w#-])(" + "|".join(NAMED) + r")(?![\w-])")
 
           def hex_sub(m):
-              h = m.group(1)
-              alpha = ""
+              h, alpha = m.group(1), ""
               if len(h) == 3:
                   h = "".join(c * 2 for c in h)
               elif len(h) == 8:
@@ -81,40 +81,37 @@ jobs:
               r, g, b = (int(x) for x in m.groups()[:3])
               a = m.group(4)
               nr, ng, nb = recolor(r, g, b)
-              if a is None:
-                  return f"rgb({nr},{ng},{nb})"
-              return f"rgba({nr},{ng},{nb},{a})"
+              return f"rgb({nr},{ng},{nb})" if a is None else f"rgba({nr},{ng},{nb},{a})"
+
+          def attr_sub(m):
+              # só mexe em atributos de cor e nas listas de animação (values="a;b;c")
+              return NAMED_RE.sub(lambda n: NAMED[n.group(1)], m.group(0))
+
+          ATTR = re.compile(r'\b(?:fill|stroke|values|from|to)="[^"]*"')
+          BG_RECT = re.compile(r'(<rect\b[^>]*width="100%"[^>]*height="100%"[^>]*?fill=")[^"]*(")')
 
           files = sorted(Path("dist").glob("*.svg"))
           if not files:
               raise RuntimeError("Nenhum SVG encontrado em dist/")
 
-          bg_rect = '<rect width="100%" height="100%" fill="#0a0805"/>'
-
           for path in files:
               svg = path.read_text(encoding="utf-8")
-
-              m = re.search(r"<svg[^>]*>", svg)
-              if not m:
+              if not re.search(r"<svg[^>]*>", svg):
                   raise RuntimeError(f"SVG inválido: {path}")
-
-              # --- DEBUG: cores originais encontradas ---
-              found = Counter(x.lower() for x in re.findall(r"#[0-9a-fA-F]{3,8}\b", svg))
-              found.update(x.group(0) for x in RGBA.finditer(svg))
-              print(f"--- Cores originais em {path} ---")
-              for color, n in found.most_common(25):
-                  print(f"{n:6d}  {color}")
-              if re.search(r"hsla?\(", svg):
-                  print("AVISO: o SVG usa hsl(), que este script não converte.")
 
               svg = HEX.sub(hex_sub, svg)
               svg = RGBA.sub(rgba_sub, svg)
+              svg = ATTR.sub(attr_sub, svg)
 
-              m = re.search(r"<svg[^>]*>", svg)
-              svg = svg[:m.end()] + bg_rect + svg[m.end():]
+              # Fundo: o SVG original já traz um <rect 100%x100%> com a cor de fundo.
+              # Troca a cor desse retângulo em vez de empilhar outro por baixo dele.
+              svg, n = BG_RECT.subn(lambda m: m.group(1) + BG + m.group(2), svg)
+              if n == 0:
+                  m = re.search(r"<svg[^>]*>", svg)
+                  svg = svg[:m.end()] + f'<rect width="100%" height="100%" fill="{BG}"/>' + svg[m.end():]
 
               path.write_text(svg, encoding="utf-8")
-              print(f"Recolorido: {path}")
+              print(f"Recolorido: {path} (retângulos de fundo ajustados: {n})")
 
           # A base é o tema escuro: a versão dark também substitui a light.
           for dark in Path("dist").glob("*-dark.svg"):
