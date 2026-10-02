@@ -39,9 +39,9 @@ breaking things for fun, shipping the occasional dumb little project nobody aske
 
 ### `諸` specs
 
-**OS:** Arch Linux & NixOS
+**OS:** NixOS
 <br>
-**KER:** Linux CachyOS Bore
+**KER:** Linux CachyOS
 <br>
 **CPU:** AMD Ryzen 5 5600 @ 4.70 GHz
 <br>
