@@ -28,36 +28,44 @@ jobs:
         run: |
           python3 - <<'PY'
           import re
+          import colorsys
+          from collections import Counter
           from pathlib import Path
 
           BG = (0x0a, 0x08, 0x05)
           RED = (0xe2, 0x34, 0x2a)
 
-          SAT_GRAY = 0.40   # abaixo disso a cor é considerada cinza
-          LUM_BG = 0.07     # cinzas mais escuros que isso viram o fundo
-          GAIN = 1.5        # os commits mais fortes chegam perto de #e2342a
+          GAIN = 1.5          # commits mais fortes chegam perto de #e2342a
+          GRAY_MIN = 0x2a     # cinza mínimo das células vazias (visível sobre o fundo)
+          GRAY_MAX = 0x55     # cinza máximo
 
           def lum(r, g, b):
               return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255
 
+          def is_gray(r, g, b):
+              h, s, v = colorsys.rgb_to_hsv(r / 255, g / 255, b / 255)
+              hue = h * 360
+              if s < 0.25:
+                  return True                      # cinza neutro
+              if 170 <= hue <= 270 and s < 0.60:
+                  return True                      # azul-acinzentado (ex.: #161b22)
+              return False
+
           def recolor(r, g, b):
-              mx, mn = max(r, g, b), min(r, g, b)
-              sat = 0 if mx == 0 else (mx - mn) / mx
               l = lum(r, g, b)
-
-              if sat < SAT_GRAY:
-                  if l < LUM_BG:
-                      return BG
+              if is_gray(r, g, b):
                   v = round(l * 255)
-                  return (v, v, v)  # cinza neutro, sem vermelho
-
+                  v = min(max(v, GRAY_MIN), GRAY_MAX)
+                  return (v, v, v)
               t = min(1.0, l * GAIN)
               return tuple(round(BG[i] + (RED[i] - BG[i]) * t) for i in range(3))
 
           HEX = re.compile(
               r"(?<!url\()#([0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{3})(?![0-9a-zA-Z_-])"
           )
-          RGB = re.compile(r"rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)")
+          RGBA = re.compile(
+              r"rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*(?:,\s*([\d.]+)\s*)?\)"
+          )
 
           def hex_sub(m):
               h = m.group(1)
@@ -69,9 +77,13 @@ jobs:
               r, g, b = (int(h[i:i + 2], 16) for i in (0, 2, 4))
               return "#{:02x}{:02x}{:02x}{}".format(*recolor(r, g, b), alpha)
 
-          def rgb_sub(m):
-              r, g, b = (int(x) for x in m.groups())
-              return "rgb({},{},{})".format(*recolor(r, g, b))
+          def rgba_sub(m):
+              r, g, b = (int(x) for x in m.groups()[:3])
+              a = m.group(4)
+              nr, ng, nb = recolor(r, g, b)
+              if a is None:
+                  return f"rgb({nr},{ng},{nb})"
+              return f"rgba({nr},{ng},{nb},{a})"
 
           files = sorted(Path("dist").glob("*.svg"))
           if not files:
@@ -86,8 +98,17 @@ jobs:
               if not m:
                   raise RuntimeError(f"SVG inválido: {path}")
 
+              # --- DEBUG: cores originais encontradas ---
+              found = Counter(x.lower() for x in re.findall(r"#[0-9a-fA-F]{3,8}\b", svg))
+              found.update(x.group(0) for x in RGBA.finditer(svg))
+              print(f"--- Cores originais em {path} ---")
+              for color, n in found.most_common(25):
+                  print(f"{n:6d}  {color}")
+              if re.search(r"hsla?\(", svg):
+                  print("AVISO: o SVG usa hsl(), que este script não converte.")
+
               svg = HEX.sub(hex_sub, svg)
-              svg = RGB.sub(rgb_sub, svg)
+              svg = RGBA.sub(rgba_sub, svg)
 
               m = re.search(r"<svg[^>]*>", svg)
               svg = svg[:m.end()] + bg_rect + svg[m.end():]
@@ -95,8 +116,7 @@ jobs:
               path.write_text(svg, encoding="utf-8")
               print(f"Recolorido: {path}")
 
-          # A base é o tema escuro: se existir a versão dark, ela também
-          # substitui a versão light.
+          # A base é o tema escuro: a versão dark também substitui a light.
           for dark in Path("dist").glob("*-dark.svg"):
               light = dark.with_name(dark.name.replace("-dark", ""))
               light.write_text(dark.read_text(encoding="utf-8"), encoding="utf-8")
