@@ -24,40 +24,46 @@ jobs:
           games: "pacman"
           player_style: "opportunistic"
 
-      - name: Convert graph to #e2342a
+      - name: Color contributions #e2342a
         run: |
           python3 - <<'PY'
           from pathlib import Path
+          import re
+
+          RED = "#e2342a"
+
+          CONTRIBUTION_COLORS = {
+              "#ebedf0",
+              "#9be9a8",
+              "#40c463",
+              "#30a14e",
+              "#216e39",
+              "#161b22",
+              "#0e4429",
+              "#006d32",
+              "#26a641",
+              "#39d353",
+          }
 
           for path in Path("dist").glob("*.svg"):
               svg = path.read_text(encoding="utf-8")
 
-              start = svg.find(">")
-              if start == -1:
-                  raise RuntimeError(f"Invalid SVG: {path}")
+              def replace_fill(match):
+                  color = match.group(1).lower()
 
-              filter_block = """
-          <defs>
-            <filter id="aethctl-red">
-              <feColorMatrix
-                type="matrix"
-                values="
-                  0 0 0 0 0.8863
-                  0 0 0 0 0.2039
-                  0 0 0 0 0.1647
-                  0 0 0 1 0
-                "
-              />
-            </filter>
-          </defs>
-          <g filter="url(#aethctl-red)">
-          """
+                  if color in CONTRIBUTION_COLORS:
+                      return f'fill="{RED}"'
 
-              svg = svg[:start + 1] + filter_block + svg[start + 1:]
-              svg = svg.rsplit("</svg>", 1)[0] + "</g></svg>"
+                  return match.group(0)
+
+              svg = re.sub(
+                  r'fill="(#[0-9a-fA-F]{6})"',
+                  replace_fill,
+                  svg
+              )
 
               path.write_text(svg, encoding="utf-8")
-              print(f"Colored {path} with #e2342a")
+              print(f"Colored contributions in {path} with {RED}")
           PY
 
       - name: Push SVGs to output branch
