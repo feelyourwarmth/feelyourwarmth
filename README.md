@@ -33,6 +33,8 @@ breaking things for fun, shipping the occasional dumb little project nobody aske
 
 <div align="center">
 <img src="https://streak-stats.demolab.com/?user=feelyourwarmth&hide_border=true&background=0a0805&ring=e2342a&fire=e2342a&currStreakNum=c9c9c9&currStreakLabel=e2342a&sideNums=c9c9c9&sideLabels=c9c9c9&dates=888888&stroke=333333" />
+<br>
+<img alt="Pac-Man contribution graph" src="https://raw.githubusercontent.com/feelyourwarmth/feelyourwarmth/output/pacman-contribution-graph-dark.svg">
 </div>
 
 <br>
@@ -58,12 +60,6 @@ breaking things for fun, shipping the occasional dumb little project nobody aske
 ⚙️ contributing in **[Ryoku](https://github.com/Ryoku-dev/ryoku)** and **[Ryostore](https://github.com/Ryoku-dev/ryostore)**
 <br>
 🧪 cursed side-projects
-
-<br>
-
-### `記` commits
-
-<img alt="Pac-Man contribution graph" src="https://raw.githubusercontent.com/feelyourwarmth/feelyourwarmth/output/pacman-contribution-graph-dark.svg">
 
 <br>
 
