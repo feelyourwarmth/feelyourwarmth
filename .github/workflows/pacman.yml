@@ -24,33 +24,60 @@ jobs:
           games: "pacman"
           player_style: "opportunistic"
 
-      - name: Recolor graph (commits #e2342a, background #0a0805)
+      - name: Recolor graph (commits #e2342a, background #0a0805, empty cells gray)
         run: |
           python3 - <<'PY'
           import re
           from pathlib import Path
 
-          BG = "#0a0805"
+          BG = (0x0a, 0x08, 0x05)
+          RED = (0xe2, 0x34, 0x2a)
 
-          # Duotone: luminância -> gradiente entre #0a0805 e #e2342a
-          # (ganho de 1.5 para os commits mais fortes chegarem perto de #e2342a)
-          FILTER = (
-              '<defs>'
-              '<filter id="duotone" color-interpolation-filters="sRGB">'
-              '<feColorMatrix type="matrix" values="'
-              '0.2701 0.9088 0.0917 0 0.0392 '
-              '0.0550 0.1851 0.0187 0 0.0314 '
-              '0.0463 0.1556 0.0157 0 0.0196 '
-              '0 0 0 1 0"/>'
-              '</filter>'
-              '</defs>'
-              f'<rect width="100%" height="100%" fill="{BG}"/>'
-              '<g filter="url(#duotone)">'
+          SAT_GRAY = 0.40   # abaixo disso a cor é considerada cinza
+          LUM_BG = 0.07     # cinzas mais escuros que isso viram o fundo
+          GAIN = 1.5        # os commits mais fortes chegam perto de #e2342a
+
+          def lum(r, g, b):
+              return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255
+
+          def recolor(r, g, b):
+              mx, mn = max(r, g, b), min(r, g, b)
+              sat = 0 if mx == 0 else (mx - mn) / mx
+              l = lum(r, g, b)
+
+              if sat < SAT_GRAY:
+                  if l < LUM_BG:
+                      return BG
+                  v = round(l * 255)
+                  return (v, v, v)  # cinza neutro, sem vermelho
+
+              t = min(1.0, l * GAIN)
+              return tuple(round(BG[i] + (RED[i] - BG[i]) * t) for i in range(3))
+
+          HEX = re.compile(
+              r"(?<!url\()#([0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{3})(?![0-9a-zA-Z_-])"
           )
+          RGB = re.compile(r"rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)")
+
+          def hex_sub(m):
+              h = m.group(1)
+              alpha = ""
+              if len(h) == 3:
+                  h = "".join(c * 2 for c in h)
+              elif len(h) == 8:
+                  h, alpha = h[:6], h[6:]
+              r, g, b = (int(h[i:i + 2], 16) for i in (0, 2, 4))
+              return "#{:02x}{:02x}{:02x}{}".format(*recolor(r, g, b), alpha)
+
+          def rgb_sub(m):
+              r, g, b = (int(x) for x in m.groups())
+              return "rgb({},{},{})".format(*recolor(r, g, b))
 
           files = sorted(Path("dist").glob("*.svg"))
           if not files:
               raise RuntimeError("Nenhum SVG encontrado em dist/")
+
+          bg_rect = '<rect width="100%" height="100%" fill="#0a0805"/>'
 
           for path in files:
               svg = path.read_text(encoding="utf-8")
@@ -59,15 +86,17 @@ jobs:
               if not m:
                   raise RuntimeError(f"SVG inválido: {path}")
 
-              svg = svg[:m.end()] + FILTER + svg[m.end():]
-              svg = svg.rsplit("</svg>", 1)[0] + "</g></svg>"
+              svg = HEX.sub(hex_sub, svg)
+              svg = RGB.sub(rgb_sub, svg)
+
+              m = re.search(r"<svg[^>]*>", svg)
+              svg = svg[:m.end()] + bg_rect + svg[m.end():]
 
               path.write_text(svg, encoding="utf-8")
               print(f"Recolorido: {path}")
 
-          # O filtro assume tema escuro como base: se existir a versão
-          # dark, ela também substitui a versão light (fundo/células claros
-          # ficariam vermelhos demais no duotone).
+          # A base é o tema escuro: se existir a versão dark, ela também
+          # substitui a versão light.
           for dark in Path("dist").glob("*-dark.svg"):
               light = dark.with_name(dark.name.replace("-dark", ""))
               light.write_text(dark.read_text(encoding="utf-8"), encoding="utf-8")
