@@ -35,10 +35,10 @@ jobs:
           RED = (0xe2, 0x34, 0x2a)
           BG_RGB = (0x0a, 0x08, 0x05)
 
-          FLAT_COMMITS = True  # True: todo commit fica #e2342a | False: degradê por intensidade
-          GAIN = 1.6           # só usado se FLAT_COMMITS = False
-          GRAY_MIN = 0x2a      # cinza mínimo das células vazias (visível sobre o fundo)
-          GRAY_MAX = 0x55      # cinza máximo (textos)
+          FLAT_COMMITS = False  # True: todo commit fica #e2342a | False: degradê por intensidade
+          GAIN = 1.6            # com 1.6 o commit mais forte vira exatamente #e2342a
+          GRAY_MIN = 0x2a       # cinza mínimo das células vazias (visível sobre o fundo)
+          GRAY_MAX = 0x55       # cinza máximo (textos)
 
           NAMED = {
               "yellow": "#e2342a",   # Pac-Man
