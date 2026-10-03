@@ -57,7 +57,7 @@ breaking things for fun, shipping the occasional dumb little project nobody aske
 
 ### `現` currently
 
-⚙️ contributing in **[Ryoku](https://github.com/Ryoku-dev/ryoku)** and **[Ryostore](https://github.com/Ryoku-dev/ryostore)**
+⚙️ contributing in **[Ryoku](https://github.com/Ryoku-dev/ryoku)**, **[Ryoku on NixOS](https://github.com/aethctl/Ryoku-on-NixOS)** and **[Ryostore](https://github.com/Ryoku-dev/ryostore)**
 <br>
 🧪 cursed side-projects
 
