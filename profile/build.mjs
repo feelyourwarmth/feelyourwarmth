@@ -2,7 +2,7 @@ import { readFileSync, writeFileSync, readdirSync, unlinkSync } from 'node:fs'
 import { createHash } from 'node:crypto'
 
 const DIR = new URL('./', import.meta.url)
-const USER = 'feel'
+const USER = 'feelyourwarmth'
 const FLAGSHIP = 'Nind'
 const W = 880
 const PAD = 32
