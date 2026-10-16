@@ -3,8 +3,8 @@
 <style>
 .m{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;fill:#0e0e0c}
 .d{font-family:'Arial Narrow','Roboto Condensed',Arial,sans-serif;font-weight:900;fill:#0e0e0c}
-.dim{fill-opacity:.5}.mid{fill-opacity:.72}.sig{fill:#e0362b}.hair{stroke:rgba(14,14,12,.16);stroke-width:1}
-.ln{fill:none;stroke:#0e0e0c;stroke-opacity:.5}.fill{fill:#0e0e0c}.ar{fill:none;stroke:#e0362b;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.dim{fill-opacity:.5}.mid{fill-opacity:.72}.sig{fill:#97c6cb}.hair{stroke:rgba(14,14,12,.16);stroke-width:1}
+.ln{fill:none;stroke:#0e0e0c;stroke-opacity:.5}.fill{fill:#0e0e0c}.ar{fill:none;stroke:#97c6cb;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 
 @media(prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>
