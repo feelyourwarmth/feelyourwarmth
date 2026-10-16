@@ -6,7 +6,8 @@ const USER = 'feelyourwarmth'
 const FLAGSHIP = 'Nind'
 const W = 880
 const PAD = 32
-const SIGNAL = '#e0362b'
+//const SIGNAL = '#e0362b'
+const SIGNAL = '#97c6cb'
 const RAW = `https://raw.githubusercontent.com/${USER}/${USER}/main/profile/`
 const SITE = 'https://github.com/feelyourwarmth/Nind'
 
