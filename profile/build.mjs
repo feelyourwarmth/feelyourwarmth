@@ -3,13 +3,13 @@ import { createHash } from 'node:crypto'
 
 const DIR = new URL('./', import.meta.url)
 const USER = 'feelyourwarmth'
-const FLAGSHIP = 'Nind'
+const FLAGSHIP = 'ryoku'
 const W = 880
 const PAD = 32
 //const SIGNAL = '#e0362b'
 const SIGNAL = '#97c6cb'
 const RAW = `https://raw.githubusercontent.com/${USER}/${USER}/main/profile/`
-const SITE = 'https://github.com/feelyourwarmth/Nind'
+const SITE = 'https://github.com/Ryoku-dev/ryoku'
 
 const THEMES = {
   light: { fg: '#0e0e0c', line: 'rgba(14,14,12,.16)' },
@@ -113,7 +113,7 @@ function intro(theme) {
   const lines = wrap(text, 15, W - PAD * 2)
   let body = lines.map((line, i) => `<text class="m" x="${PAD}" y="${34 + i * 26}" font-size="15">${esc(line)}</text>`).join('\n')
   const y = 34 + lines.length * 26 + 20
-  body += `<text class="m sig" x="${PAD}" y="${y}" font-size="13">github.com/feelyourwarmth/Nind</text><g class="nudge">${upRight(290, y - 9)}</g><text class="m dim" x="315" y="${y}">niri + noctalia, automated</text>`
+  body += `<text class="m sig" x="${PAD}" y="${y}" font-size="13">github.com/Ryoku-dev/ryoku</text><g class="nudge">${upRight(290, y - 9)}</g><text class="m dim" x="315" y="${y}">niri + noctalia, automated</text>`
   return svg(theme, y + 24, NUDGE, body, "21 years old, breaking things for fun and shipping small projects nobody asked for.")
 }
 
@@ -146,10 +146,10 @@ function layers(theme) {
 }
 
 const WORK = [
-  { name: 'Nind', device: 'ryoku', desc: 'Opinionated Niri + Noctalia dotfiles for Arch Linux, with an automated installer that turns a minimal system into a complete desktop.' },
-  { name: 'NixOS', device: 'nix', desc: 'My current NixOS configuration: declarative system setup, niri desktop work, and whatever I break while making it mine.' },
-  { name: 'Ryoku', href: 'https://github.com/Ryoku-dev/ryoku', device: 'upstream', desc: 'Contributing to Ryoku and its Linux desktop ecosystem while learning by changing real things instead of reading about them forever.' },
-  { name: 'Ryostore', href: 'https://github.com/Ryoku-dev/ryostore', device: 'store', desc: 'Contributing to the Ryoku app and package surface, where desktop-native discovery and installation meet the rest of the shell.' },
+  { name: 'Ryoku', href: 'https://github.com/Ryoku-dev/ryoku', device: 'upstream', desc: 'Ryoku: Opinionated Arch workstation. Shell surfaces, keybinds, doctor, updater and installer fixes, with tests that prove the bug first.' },
+  { name: 'Ryostore', href: 'https://github.com/Ryoku-dev/ryostore', device: 'store', desc: 'Ryostore: Store for Ryoku bar styles and add-ons. Sidebar buttons wired to the surfaces the shell actually serves.' },
+  { name: 'Nind', device: 'ryoku', desc: 'Nind: Opinionated Niri + Noctalia dotfiles for Arch Linux, with an automated installer that turns a minimal system into a complete desktop.' },
+  { name: 'NixOS', device: 'nix', desc: 'NixOS: My current NixOS configuration: declarative system setup, niri desktop work, and whatever I break while making it mine.' },
 ]
 
 const DEV_W = 208
