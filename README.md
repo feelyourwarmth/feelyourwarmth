@@ -2,7 +2,7 @@
 
 <a href="https://github.com/feelyourwarmth/feelyourwarmth"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/feelyourwarmth/feelyourwarmth/main/profile/surface-dark-3be7dbf45942.svg"><img src="https://raw.githubusercontent.com/feelyourwarmth/feelyourwarmth/main/profile/surface-light-762bc03f4f1f.svg" width="100%" alt="feelyourwarmth. Linux, NixOS, and cursed side projects."></picture></a>
 
-<a href="https://github.com/Ryoku-dev/ryoku"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/feelyourwarmth/feelyourwarmth/main/profile/intro-dark-085377da0a99.svg"><img src="https://raw.githubusercontent.com/feelyourwarmth/feelyourwarmth/main/profile/intro-light-9e3fcca3e6c7.svg" width="100%" alt="21 years old, breaking things for fun and shipping small projects nobody asked for."></picture></a>
+<a href="https://github.com/Ryoku-dev/ryoku"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/feelyourwarmth/feelyourwarmth/main/profile/intro-dark-58c75d6c5e34.svg"><img src="https://raw.githubusercontent.com/feelyourwarmth/feelyourwarmth/main/profile/intro-light-213513b0f19b.svg" width="100%" alt="21 years old, breaking things for fun and shipping small projects nobody asked for."></picture></a>
 
 <a href="https://github.com/feelyourwarmth/ryoku"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/feelyourwarmth/feelyourwarmth/main/profile/layers-dark-34238fe00c40.svg"><img src="https://raw.githubusercontent.com/feelyourwarmth/feelyourwarmth/main/profile/layers-light-47b4d4c8089a.svg" width="100%" alt="Python, TypeScript, JavaScript, C#, niri, NixOS and Ryoku work."></picture></a>
 
