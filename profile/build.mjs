@@ -3,13 +3,13 @@ import { createHash } from 'node:crypto'
 
 const DIR = new URL('./', import.meta.url)
 const USER = 'feelyourwarmth'
-const FLAGSHIP = 'ryoku'
+const FLAGSHIP = 'Ryoku-on-NixOS'
 const W = 880
 const PAD = 32
 //const SIGNAL = '#e0362b'
 const SIGNAL = '#97c6cb'
 const RAW = `https://raw.githubusercontent.com/${USER}/${USER}/main/profile/`
-const SITE = 'https://github.com/Ryoku-dev/ryoku'
+const SITE = 'https://github.com/Ryoku-dev/Ryoku-on-NixOS'
 
 const THEMES = {
   light: { fg: '#0e0e0c', line: 'rgba(14,14,12,.16)' },
