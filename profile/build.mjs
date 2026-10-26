@@ -109,12 +109,12 @@ function surface(theme) {
 }
 
 function intro(theme) {
-  const text = "idk how to do shit, so don't hmu thanks."
+  const text = "idk how to do shit, so don't hmu thanks.\nprofile approved by the big yahu."
   const lines = wrap(text, 15, W - PAD * 2)
   let body = lines.map((line, i) => `<text class="m" x="${PAD}" y="${34 + i * 26}" font-size="15">${esc(line)}</text>`).join('\n')
   const y = 34 + lines.length * 26 + 20
   body += `<text class="m sig" x="${PAD}" y="${y}" font-size="13">github.com/Ryoku-dev/Ryoku-on-NixOS</text><g class="nudge">${upRight(290, y - 9)}</g><text class="m dim" x="315" y="${y}">Grandmaster Larp</text>`
-  return svg(theme, y + 24, NUDGE, body, "21 years old, breaking things for fun and shipping small projects nobody asked for.")
+  return svg(theme, y + 24, NUDGE, body, "yo")
 }
 
 function layers(theme) {
