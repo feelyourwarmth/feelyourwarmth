@@ -74,12 +74,12 @@ ${body}
 }
 
 function surface(theme) {
-  const line = { text: 'FEELYOURWARMTH', y: 205, size: 66, span: 770 }
+  const line = { text: 'FEEL', y: 205, size: 66, span: 770 }
   const STEPS = 32
   const DUR = 9
   let css = ''
   let body = `
-<text class="m" x="${PAD}" y="30">feelyourwarmth <tspan class="sig">@</tspan> linux</text>
+<text class="m" x="${PAD}" y="30">feel <tspan class="sig">@</tspan> nixos</text>
 <line class="hair" x1="${PAD}" x2="${W - PAD}" y1="44.5" y2="44.5"/>`
 
   const chars = [...line.text]
