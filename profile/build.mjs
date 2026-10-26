@@ -109,7 +109,7 @@ function surface(theme) {
 }
 
 function intro(theme) {
-  const text = "21y old dumbass who doesn't know how to do things properly lmao. Breaking things for fun, shipping the occasional dumb little project nobody asked for."
+  const text = "idk how to do shit, so don't hmu thanks."
   const lines = wrap(text, 15, W - PAD * 2)
   let body = lines.map((line, i) => `<text class="m" x="${PAD}" y="${34 + i * 26}" font-size="15">${esc(line)}</text>`).join('\n')
   const y = 34 + lines.length * 26 + 20
