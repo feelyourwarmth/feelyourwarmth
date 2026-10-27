@@ -2,7 +2,7 @@
 
 <a href="https://github.com/feelyourwarmth/feelyourwarmth"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/feelyourwarmth/feelyourwarmth/main/profile/surface-dark-da6e51ad62a2.svg"><img src="https://raw.githubusercontent.com/feelyourwarmth/feelyourwarmth/main/profile/surface-light-fa40c8afb8ac.svg" width="100%" alt="feelyourwarmth. Linux, NixOS, and cursed side projects."></picture></a>
 
-<a href="https://github.com/Ryoku-dev/Ryoku-on-NixOS"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/feelyourwarmth/feelyourwarmth/main/profile/intro-dark-5f31c53e3dda.svg"><img src="https://raw.githubusercontent.com/feelyourwarmth/feelyourwarmth/main/profile/intro-light-8e88e788a44d.svg" width="100%" alt="yo"></picture></a>
+<a href="https://github.com/Ryoku-dev/Ryoku-on-NixOS"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/feelyourwarmth/feelyourwarmth/main/profile/intro-dark-09ddcf1b3cd3.svg"><img src="https://raw.githubusercontent.com/feelyourwarmth/feelyourwarmth/main/profile/intro-light-07a0e3948c58.svg" width="100%" alt="yo"></picture></a>
 
 <a href="https://github.com/feelyourwarmth/Ryoku-on-NixOS"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/feelyourwarmth/feelyourwarmth/main/profile/layers-dark-34238fe00c40.svg"><img src="https://raw.githubusercontent.com/feelyourwarmth/feelyourwarmth/main/profile/layers-light-47b4d4c8089a.svg" width="100%" alt="Python, TypeScript, JavaScript, C#, niri, NixOS and Ryoku work."></picture></a>
 
