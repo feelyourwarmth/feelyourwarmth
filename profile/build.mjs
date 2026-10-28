@@ -324,7 +324,7 @@ function shell(theme) {
   const cmdX = 56 + monoW(prompt.length, 13) + 8
   const out = [
     ['os', 'NixOS 26.11 (Zokor)'],
-    ['kernel', 'Linux CachyOS'],
+    ['kernel', 'Linux 7.2.11 Zen'],
     ['cpu', 'Ryzen 5 5600 @ 4.70 GHz'],
     ['gpu', 'RTX 3060 12 GB @ 1965 MHz'],
     ['memory', '32 GB DDR4 @ 3200 MHz'],
