@@ -113,7 +113,7 @@ function intro(theme) {
   const lines = wrap(text, 15, W - PAD * 2)
   let body = lines.map((line, i) => `<text class="m" x="${PAD}" y="${34 + i * 26}" font-size="15">${esc(line)}</text>`).join('\n')
   const y = 34 + lines.length * 26 + 20
-  body += `<text class="m sig" x="${PAD}" y="${y}" font-size="13">github.com/Ryoku-dev/Ryoku-on-NixOS</text><g class="nudge">${upRight(290, y - 9)}</g><text class="m dim" x="315" y="${y}">Lead Maintainer</text>`
+  body += `<text class="m sig" x="${PAD}" y="${y}" font-size="13">github.com/Ryoku-dev/OS</text><g class="nudge">${upRight(290, y - 9)}</g><text class="m dim" x="315" y="${y}">Lead Maintainer</text>`
   return svg(theme, y + 24, NUDGE, body, "yo")
 }
 
@@ -146,7 +146,7 @@ function layers(theme) {
 }
 
 const WORK = [
-  { name: 'Ryoku', href: 'https://github.com/Ryoku-dev/Ryoku-on-NixOS', device: 'upstream', desc: 'Ryoku-on-NixOS: The official declarative NixOS port of Ryoku, with native modules, packaging, installer work, compositor integration and NixOS-specific runtime bridges.' },
+  { name: 'Ryoku-on-NixOS', href: 'https://github.com/Ryoku-dev/Ryoku-on-NixOS', device: 'upstream', desc: 'Ryoku-on-NixOS: The official declarative NixOS port of Ryoku, with native modules, packaging, installer work, compositor integration and NixOS-specific runtime bridges.' },
   { name: 'Ryostore', href: 'https://github.com/Ryoku-dev/ryostore', device: 'store', desc: 'Ryostore: Store for Ryoku bar styles and add-ons. Sidebar buttons wired to the surfaces the shell actually serves.' },
   { name: 'Nind', device: 'ryoku', desc: 'Nind: Opinionated Niri + Noctalia dotfiles for Arch Linux, with an automated installer that turns a minimal system into a complete desktop.' },
   { name: 'NixOS', device: 'nix', desc: 'NixOS: My current NixOS configuration: declarative system setup, niri desktop work, and whatever I break while making it mine.' },
