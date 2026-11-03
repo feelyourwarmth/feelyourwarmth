@@ -121,10 +121,10 @@ function layers(theme) {
   const t = THEMES[theme]
   const DUR = 8
   const L = [
-    ['L1', 'LANGS', 'Python · TypeScript · JavaScript · C#', 'tools loaded'],
-    ['L2', 'DESKTOP', 'niri · Wayland · Noctalia · NixOS', 'session attached'],
-    ['L3', 'SYSTEM', 'CachyOS kernel · NVIDIA · 32 GB DDR4', 'machine online'],
-    ['L4', 'CURRENT', 'NixOS config · Ryoku · cursed side-projects', 'something broke'],
+    ['L1', 'LANGUAGES', 'Python · TypeScript · JavaScript · C#', 'tools'],
+    ['L2', 'ENVIRONMENT', 'NixOS · niri', 'session'],
+    ['L3', 'HARDWARE', 'Zen kernel · NVIDIA · 32 GB DDR4', 'machine'],
+    ['L4', 'WORKING ON', 'NixOS config · Ryoku Nix', 'in progress'],
   ]
   const x0 = PAD + 8, sw = 270, sk = 64, sd = 42, gap = 88, top = 150
   const cx = x0 + sk / 2 + sw / 2
@@ -146,7 +146,7 @@ function layers(theme) {
 }
 
 const WORK = [
-  { name: 'Ryoku', href: 'https://github.com/Ryoku-dev/ryoku', device: 'upstream', desc: 'Ryoku: Opinionated Arch workstation. Shell surfaces, keybinds, doctor, updater and installer fixes, with tests that prove the bug first.' },
+  { name: 'Ryoku', href: 'https://github.com/Ryoku-dev/Ryoku-on-NixOS', device: 'upstream', desc: 'Ryoku-on-NixOS: The official declarative NixOS port of Ryoku, with native modules, packaging, installer work, compositor integration and NixOS-specific runtime bridges.' },
   { name: 'Ryostore', href: 'https://github.com/Ryoku-dev/ryostore', device: 'store', desc: 'Ryostore: Store for Ryoku bar styles and add-ons. Sidebar buttons wired to the surfaces the shell actually serves.' },
   { name: 'Nind', device: 'ryoku', desc: 'Nind: Opinionated Niri + Noctalia dotfiles for Arch Linux, with an automated installer that turns a minimal system into a complete desktop.' },
   { name: 'NixOS', device: 'nix', desc: 'NixOS: My current NixOS configuration: declarative system setup, niri desktop work, and whatever I break while making it mine.' },
@@ -229,7 +229,7 @@ const DEVICES = {
     let css = '@keyframes cur{0%,49%{opacity:1}50%,100%{opacity:0}}.cur{animation:cur 1s steps(1) infinite}'
     let body = `${monitor()}<text class="m dim" x="10" y="18" font-size="7">nixos  ~/.config</text><text class="m" x="10" y="34" font-size="8">❯</text>`
     ;[...cmd].forEach((ch, i) => { css += appear(`nc${i}`, 0.04 + i * 0.012, 0.92, 8); body += `<text class="m nc${i}" x="${22 + i * 4.25}" y="34" font-size="7.2" opacity="0">${esc(ch)}</text>` })
-    const out = ['building system…', 'activating configuration…', 'reloading user units…', 'done. probably.']
+    const out = ['building system…', 'activating configuration…', 'reloading user units…', 'done... maybe.']
     out.forEach((line, i) => { css += appear(`no${i}`, 0.45 + i * 0.07, 0.9, 8); body += `<text class="m no${i}" x="14" y="${54 + i * 12}" font-size="7.2" opacity="0"><tspan class="${i === 3 ? 'sig' : 'dim'}">${esc(line)}</tspan></text>` })
     body += '<rect class="fill cur" x="165" y="27" width="4" height="9"/>'
     return { css, body }
