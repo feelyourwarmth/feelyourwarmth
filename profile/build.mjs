@@ -117,8 +117,8 @@ function intro(theme) {
   const linkSize = 13
 
   const linkWidth = monoW(link.length, linkSize)
-  const arrowX = PAD + linkWidth + 12
-  const roleX = arrowX + 20
+  const arrowX = PAD + linkWidth + 5
+  const roleX = arrowX + 13#97c6cb'
 
   body += `<text class="m sig" x="${PAD}" y="${y}" font-size="${linkSize}">${link}</text><g class="nudge">${upRight(arrowX, y - 9)}</g><text class="m dim" x="${roleX}" y="${y}">Lead Maintainer</text>`
   return svg(theme, y + 24, NUDGE, body, "yo")
