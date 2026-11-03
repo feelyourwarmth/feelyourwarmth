@@ -113,7 +113,14 @@ function intro(theme) {
   const lines = wrap(text, 15, W - PAD * 2)
   let body = lines.map((line, i) => `<text class="m" x="${PAD}" y="${34 + i * 26}" font-size="15">${esc(line)}</text>`).join('\n')
   const y = 34 + lines.length * 26 + 20
-  body += `<text class="m sig" x="${PAD}" y="${y}" font-size="13">https://github.com/Ryoku-dev/Ryoku-on-NixOS</text><g class="nudge">${upRight(290, y - 9)}</g><text class="m dim" x="315" y="${y}">Lead Maintainer</text>`
+  const link = 'https://github.com/Ryoku-dev/Ryoku-on-NixOS'
+  const linkSize = 13
+
+  const linkWidth = monoW(link.length, linkSize)
+  const arrowX = PAD + linkWidth + 12
+  const roleX = arrowX + 20
+
+  body += `<text class="m sig" x="${PAD}" y="${y}" font-size="${linkSize}">${link}</text><g class="nudge">${upRight(arrowX, y - 9)}</g><text class="m dim" x="${roleX}" y="${y}">Lead Maintainer</text>`
   return svg(theme, y + 24, NUDGE, body, "yo")
 }
 
