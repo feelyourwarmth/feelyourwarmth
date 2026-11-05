@@ -137,7 +137,7 @@ function layers(theme) {
   const cx = x0 + sk / 2 + sw / 2
   const hit = [0.16, 0.32, 0.48, 0.64]
   let css = ''
-  let body = `${header('02', 'the stack')}<text class="d" x="${PAD}" y="92" font-size="36">MINIMAL. METICULOUS. CURSED.</text>`
+  let body = `${header('02', 'the stack')}<text class="d" x="${PAD}" y="92" font-size="36">MINIMAL. METICULOUS.</text>`
   L.forEach(([id, name, tags, log], i) => {
     const y = top + gap * i
     const pts = `${x0},${y + sd / 2} ${x0 + sk},${y - sd / 2} ${x0 + sk + sw},${y - sd / 2} ${x0 + sw},${y + sd / 2}`
