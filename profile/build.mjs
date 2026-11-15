@@ -331,11 +331,11 @@ function shell(theme) {
   const cmdX = 56 + monoW(prompt.length, 13) + 8
   const out = [
     ['os', 'NixOS 26.11 (Zokor)'],
-    ['kernel', 'Linux 7.2.11 Zen'],
+    ['kernel', 'Linux 7.3.4'],
     ['cpu', 'Ryzen 5 5600 @ 4.70 GHz'],
     ['gpu', 'RTX 3060 12 GB @ 1965 MHz'],
     ['memory', '32 GB DDR4 @ 3200 MHz'],
-    ['wm', 'niri 26.04'],
+    ['wm', 'Hyprland 0.57.0'],
   ]
   let css = '@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}.blink{animation:blink 1s steps(1) infinite}'
   let body = `${header('05','shell')}<rect class="ln" x="32.5" y="60.5" width="815" height="330" rx="6" stroke-opacity=".35"/><text class="m dim" x="440" y="80" text-anchor="middle">terminal  ~</text><line class="hair" x1="33" x2="847" y1="92.5" y2="92.5"/><text class="m" x="56" y="122" font-size="13">feel<tspan class="sig">@nixos</tspan><tspan class="dim"> ~ </tspan></text>${chevron(cmdX - 12,118)}`
